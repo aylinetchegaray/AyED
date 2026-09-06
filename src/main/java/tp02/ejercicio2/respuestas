@@ -1,0 +1,46 @@
+2.
+a) ¿Qué recorridos conoce para recorrer en profundidad un árbol general? Explique
+brevemente.
+
+Los recorridos en profundidad son aquellos que avanzan por una rama hasta llegar a una hoja antes de retroceder.
+Existen tres tipos principales:
+Preorden: Se procesa primero el nodo raíz y luego se recorre cada uno de sus hijos (recursivamente en preorden).
+Inorden: Se procesa el primer hijo (el más izquierdo), luego se procesa el nodo raíz, y finalmente se recorren los hijos restantes.
+Postorden: Se procesan primero todos los hijos (recursivamente en postorden) y se procesa el nodo raíz al final.
+
+
+b) ¿Qué recorridos conoce para recorrer por niveles un árbol general? Explique
+brevemente.
+
+Es un recorrido "en anchura". Se procesan los nodos respetando estrictamente su profundidad en el árbol.
+Primero se visita la raíz (nivel 0), luego todos sus hijos de izquierda a derecha (nivel 1), luego los hijos de estos (nivel 2), y así sucesivamente.
+Para implementarlo siempre se utiliza una estructura auxiliar de Cola (FIFO).
+
+
+c) ¿Existe alguna diferencia entre los recorridos preorden, postorden, inorden para
+recorrer los árboles generales respecto de los árboles binarios? Justifique su
+respuesta.
+
+La principal diferencia se da en el recorrido Inorden.
+En un árbol binario, el inorden es estrictamente "Hijo Izquierdo-Raíz-Hijo Derecho".
+En un árbol general, como un nodo puede tener n hijos en lugar de solo 2, la regla se adapta: se visita el primer hijo (el más izquierdo), luego la raíz, y luego se iteran los restantes n-1 hijos.
+Los recorridos preorden y postorden mantienen la misma lógica en ambos tipos de árboles.
+
+
+d) ¿Existe alguna noción de orden entre los elementos de un árbol general? Justifique
+su respuesta.
+
+En un árbol general básico no existe un ordenamiento lógico por el valor de los elementos
+(a diferencia de un Árbol Binario de Búsqueda, donde los menores van a la izquierda y los mayores a la derecha).
+El único orden es jerárquico y estructural: se sabe quién es padre, quién es hijo y quiénes son hermanos, pero los valores guardados
+(como el 14, 13, 25 del ejemplo de la práctica) pueden estar distribuidos de cualquier forma.
+
+
+
+e) En un árbol general se define el grado de un nodo como el número de hijos de ese
+nodo y el grado del árbol como el máximo de los grados de los nodos del árbol.
+¿Qué relación encuentra entre los Árboles Binarios sin tener en cuenta la
+implementación? Justifique su respuesta.
+
+El grado de un árbol es el número máximo de hijos que tiene algún nodo. La relación directa es que un árbol binario es simplemente un caso particular de un árbol general cuyo grado máximo es estrictamente 2.
+
