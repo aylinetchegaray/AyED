@@ -1,4 +1,6 @@
-package tp05.ejercicio1;
+package tp05.ejercicio1.Test;
+
+import tp05.ejercicio1.MaxHeap;
 
 public class TestMaxHeap {
     public static void main(String[] args) {
@@ -33,5 +35,30 @@ public class TestMaxHeap {
          Salida 2: 70 50 60 40 30 (70 sube a la raíz)
          Salida 3: 60 50 30 40 (60 sube a la raíz)
         */
+
+        System.out.println("\n--- TEST DE DUPLICADOS ---");
+        MaxHeap<Integer> heapDuplicados = new MaxHeap<>();
+        Integer[] datos = {10, 30, 30, 10, 50};
+        for (Integer d : datos) {
+            heapDuplicados.agregar(d);
+        }
+
+        System.out.print("Estado inicial: ");
+        System.out.println(" ");
+        heapDuplicados.imprimir();
+
+        int est = 1;
+        int el = 3;
+
+        while (est <= el) {
+            System.out.println("\n---Eliminación n°" + est+ "---");
+            System.out.println("Se extrae el: " + heapDuplicados.tope());
+            heapDuplicados.eliminar();
+            System.out.print("Estado tras eliminar: ");
+            System.out.println(" ");
+            heapDuplicados.imprimir();
+
+            est++;
+        }
     }
 }

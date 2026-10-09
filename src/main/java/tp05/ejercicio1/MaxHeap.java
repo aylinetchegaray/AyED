@@ -25,33 +25,34 @@ public class MaxHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
     }
 
     @Override
-    public boolean agregar(T dato){
-        //preguntar si hay espacio
+    public boolean agregar(T dato) {
+        if(this.cantEltos== this.datos.length){//preguntar si hay espacio
+            return false;
+        }
         this.datos[cantEltos] = dato;
         this.cantEltos++;
 
-        if(cantEltos>1){
+        if (cantEltos > 1) {
             this.percolate_up();
         }
         return true;
     }
 
-    //agregar más variables
-    private void percolate_up(){
-        int dimLog = this.cantEltos-1;
-        T temp= this.datos[dimLog]; //guarda el elemento a filtrar
-        int padre= (dimLog - 1) / 2;
-        int comparacion=this.datos[padre].compareTo(temp);
+    private void percolate_up() {
+        int dimLog = this.cantEltos - 1;
+        T temp = this.datos[dimLog]; //guarda el elemento a filtrar
+        int padre = (dimLog - 1) / 2;
+        int comparacion = this.datos[padre].compareTo(temp);
 
         //mientras no estemos en la raiz y el padre sea menor al elemento
-        while (dimLog >0 && comparacion<0){
-            this.datos[dimLog]= this.datos[padre];  //bajamos al padre
-            dimLog =padre;
+        while (dimLog > 0 && comparacion < 0) {
+            this.datos[dimLog] = this.datos[padre];  //bajamos al padre
+            dimLog = padre;
             padre = (dimLog - 1) / 2;
 
-            comparacion=this.datos[padre].compareTo(temp);
+            comparacion = this.datos[padre].compareTo(temp);
         }
-        this.datos[dimLog]=temp; //ubicacion del elemento
+        this.datos[dimLog] = temp; //ubicacion del elemento
     }
 
     @Override
@@ -61,13 +62,13 @@ public class MaxHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
         }
 
         //T raiz= this.datos[0];  //guardo la raiz
-        int dimLog= this.cantEltos-1;
-        this.datos[0]= this.datos[dimLog]; //guardo ult elemento en la raiz
-        this.datos[dimLog]=null;
+        int dimLog = this.cantEltos - 1;
+        this.datos[0] = this.datos[dimLog]; //guardo ult elemento en la raiz
+        this.datos[dimLog] = null;
         this.cantEltos--;
 
 
-        if(!this.esVacia() && cantEltos>1){
+        if (!this.esVacia() && cantEltos > 1) {
             this.percolate_down(0);
         }
     }
@@ -95,22 +96,17 @@ public class MaxHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
     }
 
     public void imprimir() {
-        for(int i=0; i<this.cantEltos; i++){
-            System.out.println(this.datos[i]+ " ");
+        for (int i = 0; i < this.cantEltos; i++) {
+            System.out.println(this.datos[i] + " ");
         }
         System.out.println();
     }
 
     @Override
-    public T tope(){
-        if(this.esVacia()){
+    public T tope() {
+        if (this.esVacia()) {
             return null;
         }
         return this.datos[0];
-    }
-
-    @Override
-    public int compareTo(T o) {
-        return 0;
     }
 }

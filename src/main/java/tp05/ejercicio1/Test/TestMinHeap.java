@@ -1,4 +1,6 @@
-package tp05.ejercicio1;
+package tp05.ejercicio1.Test;
+
+import tp05.ejercicio1.MinHeap;
 
 public class TestMinHeap {
 

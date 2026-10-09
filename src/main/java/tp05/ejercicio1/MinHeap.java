@@ -26,7 +26,9 @@ public class MinHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
 
     @Override
     public boolean agregar(T dato){
-        //preguntar si hay espacio
+        if(this.cantEltos== this.datos.length){//preguntar si hay espacio
+            return false;
+        }
         this.datos[cantEltos] = dato;
         this.cantEltos++;
 
@@ -36,7 +38,6 @@ public class MinHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
         return true;
     }
 
-    //agregar más variables
     private void percolate_up(){
         int dimLog = this.cantEltos-1;
         T temp= this.datos[dimLog]; //guarda el elemento a filtrar
@@ -108,10 +109,5 @@ public class MinHeap <T extends Comparable<T>> implements ColaPrioridades<T> {
             return null;
         }
         return this.datos[0];
-    }
-
-    @Override
-    public int compareTo(T o) {
-        return 0;
     }
 }
